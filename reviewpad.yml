@@ -128,7 +128,6 @@ workflows:
         extra-actions:
           - $addLabel("dependencies")
 
-
   # This workflow validates that pull requests do not contain changes to the license.
   # This helps avoid unwanted license modifications.
   - name: license-validation
