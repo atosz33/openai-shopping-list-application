@@ -19,6 +19,17 @@ def get_shopping_list():
         del item["_id"]
     return jsonify(items)
 
+@app.route("/api/shopping-list/<item_id>", methods=["DELETE"])
+def update_item(item_id):
+  # Get the updated item data from the request body
+  updated_item = request.get_json()
+
+  # Update the item in the database
+  db.items.delete({"_id": item_id}, updated_item)
+
+  # Return the updated item
+  return jsonify(updated_item)
+
 @app.route("/api/shopping-list/<item_id>", methods=["PUT"])
 def update_item(item_id):
   # Get the updated item data from the request body
